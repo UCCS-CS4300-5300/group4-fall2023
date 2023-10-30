@@ -1,0 +1,157 @@
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Overall Theme */
+body {
+    background-color: #000;
+    color: #FFF;
+    font-family: 'Arial', sans-serif;
+    /* background-image: url('path_to_starry_background.jpg'); Replace with a starry background */
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+h1 {
+    font-size: 4em;
+    color: #FFD700; /* gold color similar to Star Wars opening crawl */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+}
+
+/* Form & Table Styles */
+form {
+    background-color: rgba(0, 0, 0, 0.7); /* semi-transparent black */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table, th, td {
+    border: 1px solid #FFF;
+}
+
+td {
+    padding: 10px;
+}
+
+label {
+    color: #FFD700; /* gold color */
+    font-weight: bold;
+}
+
+.blank {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #FFF;
+    background-color: rgba(255, 255, 255, 0.1); /* very light transparent white */
+    color: #FFF;
+}
+
+.blank::placeholder {
+    color: #aaa; /* grayish placeholder text */
+}
+
+.button {
+    width: 100%;
+    padding: 10px;
+    background-color: #1E90FF; /* deep sky blue */
+    border: none;
+    color: #FFF;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.button:hover {
+    background-color: #4682B4; /* steel blue */
+}
+
+.button:active {
+    position: relative;
+    top: 1px; /* subtle pressed effect */
+}
+
+/* ... other previous styles ... */
+
+/* Adjusting for the new form layout */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 15px 25px;
+    background-color: rgba(0, 0, 0, 0.7); /* semi-transparent black */
+    border-radius: 8px;
+    width: 300px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin: 20px auto;
+}
+
+label {
+    font-weight: bold;
+    margin-right: 10px;
+    color: #FFD700; /* gold color */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border-radius: 4px;
+    border: 1px solid #FFF;
+    background-color: rgba(255, 255, 255, 0.1); /* very light transparent white */
+    color: #FFF;
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder,
+input[type="password"]::placeholder {
+    color: #aaa; /* grayish placeholder text */
+}
+
+button[type="submit"] {
+    align-self: center; /* center the button */
+    padding: 10px 30px;
+    background-color: #1E90FF; /* deep sky blue */
+    border: none;
+    color: #FFF;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+button[type="submit"]:hover {
+    background-color: #4682B4; /* steel blue */
+}
+
+button[type="submit"]:active {
+    position: relative;
+    top: 1px; /* subtle pressed effect */
+}
+
+br {
+    content: "";
+    margin: 15px 0;
+    display: block;
+    clear: both;
+}
