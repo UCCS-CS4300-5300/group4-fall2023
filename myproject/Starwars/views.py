@@ -22,12 +22,12 @@ class SignupView(View):
   def get(self, request):
     return render(request, "signup.html")
 
-<<<<<<< HEAD
+
 class ProfileView(View):
 
   def get(self, request):
     return render(request, "profile.html")
-=======
+
 class GameplayView(View):
 
   def get(self, request):
@@ -40,4 +40,4 @@ def character_list(request, episode_from, episode_to):
   )
   character_list = [{'name': character.name} for character in characters]
   return JsonResponse(character_list, safe=False)
->>>>>>> 2581792f83dd604b8dc6893ee87f3818a9a44142
+

@@ -15,10 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-<<<<<<< HEAD
-from Starwars.views import HomeView, LoginView, SignupView, ProfileView
-=======
-from Starwars.views import HomeView, LoginView, SignupView, GameplayView, character_list  # Import character_list here
+from Starwars.views import HomeView, LoginView, SignupView, GameplayView, character_list, ProfileView  # Import character_list here
 
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),
