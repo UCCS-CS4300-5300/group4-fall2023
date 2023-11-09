@@ -26,6 +26,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'group4-fall2023--khushalisam.repl.co',
+    'group4-fall2023-ejesse--ejesse.repl.co',
     '127.0.0.1',
     'localhost',
     '0.0.0.0'

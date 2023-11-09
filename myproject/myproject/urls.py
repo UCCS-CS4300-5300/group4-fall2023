@@ -15,11 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+<<<<<<< HEAD
 from Starwars.views import HomeView, LoginView, SignupView, ProfileView
+=======
+from Starwars.views import HomeView, LoginView, SignupView, GameplayView, character_list  # Import character_list here
+
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),
     path('home/', HomeView.as_view(), name='home'),
     path('login/', LoginView.as_view(), name='login'),
     path('signup/', SignupView.as_view(), name='signup'),
     path('profile/', ProfileView.as_view(), name='profile'),
+    path('gameplay/', GameplayView.as_view(), name='gameplay'),
+    path('api/characters/<int:episode_from>/<int:episode_to>/', character_list, name='character_list'),
 ]
+

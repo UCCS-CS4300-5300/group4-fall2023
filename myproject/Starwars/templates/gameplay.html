@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'Starwars/styles.css' %}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Star Wars Matchup</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'Starwars/styles.css' %}">
+</head>
+
+<body>
+
+  <div class="main">
+    <form class="screen">
+      <h2>Pick your Timeline:</h2>
+      <select class="dropdown">
+        <option value="ep1-3">Episode 1 - 3</option>
+        <option value="ep4-6">Episode 4 - 6</option>
+        <option value="ep7-9">Episode 7 - 9</option>
+      </select>
+
+      <h2>Pick your Champion:</h2>
+      <select class="dropdown">
+        <option value="luke">Luke Skywalker</option>
+        <option value="vader">Darth Vader</option>
+        <option value="leia">Princess Leia</option>
+        <option value="han">Han Solo</option>
+        <option value="chewie">Chewbacca</option>
+        <!-- More characters can be added here -->
+      </select>
+
+      <h2>Choose your Weapon:</h2>
+      <select class="dropdown">
+        <option value="lightsaber">Lightsaber</option>
+        <option value="blaster">Blaster</option>
+        <option value="force">The Force</option>
+        <option value="spear">Spear</option>
+        <!-- Add more weapon options here -->
+      </select>
+    </form>
+
+    <h1>VS.</h1>
+
+    <form class="screen">
+      <h2>Pick your Timeline:</h2>
+      <select class="dropdown">
+        <option value="ep1-3">Episode 1 - 3</option>
+        <option value="ep4-6">Episode 4 - 6</option>
+        <option value="ep7-9">Episode 7 - 9</option>
+      </select>
+
+      <h2>Pick your Champion:</h2>
+      <select class="dropdown">
+        <option value="rey">Rey</option>
+        <option value="kylo">Kylo Ren</option>
+        <option value="finn">Finn</option>
+        <option value="poe">Poe Dameron</option>
+        <option value="phasma">Captain Phasma</option>
+        <!-- More characters can be added here -->
+      </select>
+
+      <h2>Choose your Weapon:</h2>
+      <select class="dropdown">
+        <option value="lightsaber">Lightsaber</option>
+        <option value="blaster">Blaster</option>
+        <option value="force">The Force</option>
+        <option value="spear">Spear</option>
+        <!-- Add more weapon options here -->
+      </select>
+    </form>
+  </div>
+
+</body>
+
+</html>
