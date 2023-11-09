@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-rchj5&ow0zcj9*w+wpb-6suj8$9vy7ihk4f%ais$$z95sern2v
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'group4-fall2023-sprint2--nate45.repl.co',
+    'group4-fall2023--khushalisam.repl.co',
     '127.0.0.1',
     'localhost',
     '0.0.0.0'
