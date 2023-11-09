@@ -1,0 +1,65 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" type="text/css" href="{% static 'Starwars/styles.css' %}">
+    <style>
+        body {
+            background-image: url('background.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+</head>
+<body>
+    <h1>Gaming Profile</h1>
+
+    <!-- Avatar/Profile Picture -->
+    <button onclick="showAvatar()">Show Avatar</button>
+    <div id="avatar" style="display: none;">
+        <img src="avatar.jpg" alt="Avatar" class="profile-avatar">
+    </div>
+
+    <!-- Username/Display Name -->
+    <button onclick="showUsername()">Show Username</button>
+    <div id="username" style="display: none;">
+        <h2>Username: YourUsername</h2>
+    </div>
+
+    <!-- Level/Experience -->
+    <button onclick="showLevelExperience()">Show Level and Experience</button>
+    <div id="level-experience" style="display: none;">
+        <div class="profile-info">
+            <div>
+                <h3>Level</h3>
+                <p>10</p>
+            </div>
+            <div>
+                <h3>Experience</h3>
+                <p>5000 XP</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ... Repeat the same pattern for other sections ... -->
+
+    <script>
+        function showAvatar() {
+            document.getElementById("avatar").style.display = "block";
+        }
+
+        function showUsername() {
+            document.getElementById("username").style.display = "block";
+        }
+
+        function showLevelExperience() {
+            document.getElementById("level-experience").style.display = "block";
+        }
+
+        // Define similar functions for other sections
+    </script>
+</body>
+</html>
