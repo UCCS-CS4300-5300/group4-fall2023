@@ -21,3 +21,4 @@ The Star Wars Battle Simulator can be accessed through the following steps:
 3. Choose an ability for each character.
 4. The battle will begin and the results will be displayed after each round.
 5. Continue until one character is defeated.
+
