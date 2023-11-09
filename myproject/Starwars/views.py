@@ -22,12 +22,12 @@ class SignupView(View):
   def get(self, request):
     return render(request, "signup.html")
 
-<<<<<<< HEAD
+
 class ProfileView(View):
 
   def get(self, request):
     return render(request, "profile.html")
-=======
+
 class GameplayView(View):
 
   def get(self, request):
