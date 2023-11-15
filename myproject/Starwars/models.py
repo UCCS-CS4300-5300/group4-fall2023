@@ -8,3 +8,12 @@ class Character(models.Model):
 
   def __str__(self):
       return self.name
+
+class Battle(models.Model):
+  won = models.BooleanField(default=False)
+  details = models.TextField()
+  episode_from = models.IntegerField()
+  episode_to = models.IntegerField()
+  
+  def __str__(self):
+      return "Battle Won: " + str(self.won) + ", Details: " + self.details
