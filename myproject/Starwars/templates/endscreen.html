@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>End Screen</title>
+  <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+
+<body>
+  <div id="end-screen">
+    <h1>{{ win_status }}</h1>
+    <div id="battle-details">
+      <h2>Battle Details:</h2>
+      <p>{{ battle_details }}</p>
+    </div>
+    <div id="characters-involved">
+      <h2>Characters Involved:</h2>
+      <ul>
+        {% for character in characters %}
+        <li>{{ character.name }} - {{ character.role }} (Episode {{ character.episode }})</li>
+        {% endfor %}
+      </ul>
+    </div>
+    <a href="{% url 'gameplay' %}">Play Again</a>
+  </div>
+</body>
+
+</html>
