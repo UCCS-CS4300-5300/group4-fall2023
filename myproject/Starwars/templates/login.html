@@ -4,39 +4,83 @@
 <html>
 
 <head>
-  <link rel="stylesheet" type="text/css" href="{% static 'Starwars/styles.css' %}">
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Log In</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="login.css">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>login</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- <link rel="stylesheet" href="styles.css"> -->
+
+
+
+
 </head>
 
 <body>
-  <h1>Star Wars</h1>
+	<form id="myform" method="post">
+		<table>
+			<caption>Star Wars</caption>
+			<tr>
+				<td colspan="2">
+					<p style="color:red;padding-left: 20px;" id="validate"></p>
+				</td>
+			</tr>
+			<tr>
+				<td><label for="username">User Name : </label></td>
+				<td><input class="blank" type="text" id="username" value="" name="username"
+						placeholder="enter the username"></td>
+			</tr>
+			<tr>
+				<td><label for="password">Password : </label></td>
+				<td><input class="blank" type="password" id="password" value="" name="password"
+						placeholder="enter the password"></td>
+			</tr>
 
-  <form action="success.html">
-    <table>
-      <tr>
-        <td><label for="username">User Name : </label></td>
-        <td><input class="blank" type="text" id="username" value="" name="username" placeholder="enter the username">
-        </td>
-      </tr>
-      <tr>
-        <td><label for="password">Password : </label></td>
-        <td><input class="blank" type="password" id="password" value="" name="password"
-            placeholder="enter the password"></td>
-      </tr>
-      <tr>
-        <td colspan="2"><input class="button" type="submit" value="Submit"></td>
-      </tr>
-    </table>
+			<tr>
+				<td><input class="button" type="submit"></td>
+			</tr>
+
+		</table>
+	</form>
+
+	<!-- <script src="myproject/Starwars/templates/validation.js" async defer></script> -->
+
+	<script>
+		// Wrap your code in a function
+		function validateCredentials() {
+			document.getElementById("myform").addEventListener("submit", function (event) {
+				event.preventDefault();
+				const username = document.getElementById("username").value;
+				const password = document.getElementById("password").value;
+				const validate = document.getElementById("validate");
+				const form = document.getElementById("myform");
+
+				if (username === "admin" && password === "admin") {
+					form.setAttribute("action", "/selection");
+					form.submit(); // Submit the form
+				} else if (username === "user" && password === "user") {
+					form.setAttribute("action", "/selection");
+					form.submit();
+				} else if (username === "user2" && password === "user2") {
+					form.setAttribute("action", "/selection");
+					form.submit();
+				} else {
+					validate.innerHTML = "Invalid credentials";
+				}
+			});
+		}
+
+		// Call the function after the document has fully loaded
+		document.addEventListener("DOMContentLoaded", function () {
+			validateCredentials();
+		});
+	</script>
 
 
-  </form>
 
-  <script src="" async defer></script>
+
+
+
 </body>
 
 </html>
