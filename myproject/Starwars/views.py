@@ -22,6 +22,11 @@ class SignupView(View):
   def get(self, request):
     return render(request, "signup.html")
 
+class SelectionView(View):
+
+	def get(self, request):
+		return render(request, "selection.html")
+
 
 class ProfileView(View):
 
