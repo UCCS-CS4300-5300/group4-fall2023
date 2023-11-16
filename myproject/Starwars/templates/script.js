@@ -1,3 +1,4 @@
+{% load static %}
 
 const handleLoginPage = () => {
 	window.location.href = "login.html"
