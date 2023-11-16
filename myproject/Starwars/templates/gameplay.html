@@ -7,70 +7,120 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Star Wars Matchup</title>
-  <link rel="stylesheet" type="text/css" href="{% static 'Starwars/styles.css' %}">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
-
   <div class="main">
-    <form class="screen">
+    <form class="screen" id="team1">
       <h2>Pick your Timeline:</h2>
-      <select class="dropdown">
-        <option value="ep1-3">Episode 1 - 3</option>
-        <option value="ep4-6">Episode 4 - 6</option>
-        <option value="ep7-9">Episode 7 - 9</option>
+      <select class="dropdown" id="timeline1" name="timeline">
+        <option value="1">Episode 1 - 3</option>
+        <option value="4">Episode 4 - 6</option>
+        <option value="7">Episode 7 - 9</option>
       </select>
 
       <h2>Pick your Champion:</h2>
-      <select class="dropdown">
-        <option value="luke">Luke Skywalker</option>
-        <option value="vader">Darth Vader</option>
-        <option value="leia">Princess Leia</option>
-        <option value="han">Han Solo</option>
-        <option value="chewie">Chewbacca</option>
-        <!-- More characters can be added here -->
+      <select class="dropdown" id="champion1" name="champion">
+        <!-- Options will be dynamically loaded here -->
       </select>
-
-      <h2>Choose your Weapon:</h2>
-      <select class="dropdown">
-        <option value="lightsaber">Lightsaber</option>
-        <option value="blaster">Blaster</option>
-        <option value="force">The Force</option>
-        <option value="spear">Spear</option>
-        <!-- Add more weapon options here -->
+      <h2>Pick your Starship:</h2>
+      <select class="dropdown" id="starship1">
+        <!-- Options will be dynamically loaded here -->
       </select>
     </form>
 
     <h1>VS.</h1>
 
-    <form class="screen">
+    <form class="screen" id="team2">
       <h2>Pick your Timeline:</h2>
-      <select class="dropdown">
-        <option value="ep1-3">Episode 1 - 3</option>
-        <option value="ep4-6">Episode 4 - 6</option>
-        <option value="ep7-9">Episode 7 - 9</option>
+      <select class="dropdown" id="timeline2" name="timeline">
+        <option value="1">Episode 1 - 3</option>
+        <option value="4">Episode 4 - 6</option>
+        <option value="7">Episode 7 - 9</option>
       </select>
 
       <h2>Pick your Champion:</h2>
-      <select class="dropdown">
-        <option value="rey">Rey</option>
-        <option value="kylo">Kylo Ren</option>
-        <option value="finn">Finn</option>
-        <option value="poe">Poe Dameron</option>
-        <option value="phasma">Captain Phasma</option>
-        <!-- More characters can be added here -->
+      <select class="dropdown" id="champion2" name="champion">
+        <!-- Options will be dynamically loaded here -->
       </select>
-
-      <h2>Choose your Weapon:</h2>
-      <select class="dropdown">
-        <option value="lightsaber">Lightsaber</option>
-        <option value="blaster">Blaster</option>
-        <option value="force">The Force</option>
-        <option value="spear">Spear</option>
-        <!-- Add more weapon options here -->
+      <h2>Pick your Starship:</h2>
+      <select class="dropdown" id="starship2">
+        <!-- Options will be dynamically loaded here -->
       </select>
     </form>
   </div>
+
+  <script>
+    // JavaScript to handle dynamic loading of characters based on timeline
+    function loadCharacters(team) {
+      var timeline = $('#timeline' + team).val(); // Get the selected timeline value
+      $.ajax({
+        url: '/load-characters/', // URL to your Django view that returns characters for a timeline
+        data: {
+          'episode_id': timeline
+        },
+        success: function (data) {
+          var championSelect = $('#champion' + team);
+          championSelect.empty(); // Clear the current options
+          $.each(data, function (index, character) {
+            // The URL format is https://swapi.dev/api/people/:id/
+            // Extract the ID from the URL by splitting and getting the second-last element
+            var characterId = character.url.split('/').slice(-2)[0];
+            championSelect.append($('<option>', {
+              value: characterId, // Use the character ID as the value
+              text: character.name // Use the character name for the option text
+            }));
+          });
+        },
+        error: function (error) {
+          console.error('Error loading characters:', error);
+        }
+      });
+    }
+
+    // Event listeners for when the timeline dropdowns change
+    $('#timeline1').change(function () {
+      loadCharacters('1');
+    });
+
+    $('#timeline2').change(function () {
+      loadCharacters('2');
+    });
+
+    // Function to load starships for a given character
+    function loadStarships(characterSelect, starshipSelect) {
+      var characterId = $(characterSelect).val(); // Get the selected character ID
+      $.ajax({
+        url: '/load-starships/', // URL to your Django view that returns starships for a character
+        data: {
+          'character_id': characterId
+        },
+        success: function (starships) {
+          $(starshipSelect).empty(); // Clear the current options
+          $.each(starships, function (index, starship) {
+            $(starshipSelect).append($('<option>', {
+              text: starship.name + ' (' + starship.model + ')' // Combine name and model for display
+            }));
+          });
+        },
+        error: function (error) {
+          console.error('Error loading starships:', error);
+        }
+      });
+    }
+
+    // Event listener for when a character is selected
+    $('#champion1').change(function () {
+      loadStarships('#champion1', '#starship1'); // Assume you have a starship dropdown with ID starship1
+    });
+
+    $('#champion2').change(function () {
+      loadStarships('#champion2', '#starship2'); // And another with ID starship2 for the second team
+    });
+
+  </script>
+
 
 </body>
 

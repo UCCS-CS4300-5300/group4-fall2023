@@ -1,5 +1,6 @@
 { pkgs }: {
   deps = [
+    pkgs.httpie
     pkgs.python39Packages.django
     pkgs.python39Packages.pip
     pkgs.nodePackages.vscode-langservers-extracted
