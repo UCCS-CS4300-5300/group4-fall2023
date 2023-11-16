@@ -22,8 +22,8 @@ from Starwars.views import (
     GameplayView, 
     ProfileView, 
     EndscreenView,
-    load_characters,   # Make sure to import this
-    load_starships     # Make sure to import this as well
+    load_characters,
+    load_starships,
 )
 
 urlpatterns = [
@@ -35,7 +35,7 @@ urlpatterns = [
     path('gameplay/', GameplayView.as_view(), name='gameplay'),
     path('endscreen/<int:battle_id>/', EndscreenView.as_view(), name='endscreen'),
     path('admin/', admin.site.urls),
-    path('load-characters/', load_characters, name='load_characters'),  # Corrected syntax
-    path('load-starships/', load_starships, name='load_starships'),     # Corrected syntax
+    path('load-characters/', load_characters, name='load_characters'),
+    path('load-starships/', load_starships, name='load_starships'),
 ]
 

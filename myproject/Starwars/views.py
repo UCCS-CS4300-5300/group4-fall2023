@@ -88,10 +88,6 @@ def load_characters(request):
       print(f'An error occurred: {e}')
       return JsonResponse({'error': 'An unexpected error occurred.'}, status=500)
 
-import urllib.request
-import json
-from django.http import JsonResponse
-
 def load_starships(request):
     character_id = request.GET.get('character_id')
     url = f'https://swapi.dev/api/people/{character_id}/'
@@ -122,7 +118,6 @@ def get_characters_from_episode(episode_id):
     with urllib.request.urlopen(url) as response:
         data = json.loads(response.read().decode())
         characters = data.get('characters', [])
-        # You will need to further process characters to extract IDs or names as needed
         return characters
 
 def get_starships_for_character(character_id):
@@ -130,7 +125,6 @@ def get_starships_for_character(character_id):
     with urllib.request.urlopen(url) as response:
         data = json.loads(response.read().decode())
         starships = data.get('starships', [])
-        # You will need to further process starships to extract IDs or names as needed
         return starships
 
 def your_view(request):
