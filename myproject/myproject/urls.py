@@ -15,7 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from Starwars.views import SelectionView, HomeView, LoginView, SignupView, GameplayView, character_list, ProfileView, EndscreenView  # Import character_list here
+from Starwars.views import (
+    HomeView,
+    SelectionView,
+    LoginView, 
+    SignupView, 
+    GameplayView, 
+    ProfileView, 
+    EndscreenView,
+    load_characters,
+    load_starships,
+)
+
 
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),
@@ -26,6 +37,8 @@ urlpatterns = [
 	path('selection/', SelectionView.as_view(), name='selection'),
     path('gameplay/', GameplayView.as_view(), name='gameplay'),
     path('endscreen/<int:battle_id>/', EndscreenView.as_view(), name='endscreen'),
-    path('api/characters/<int:episode_from>/<int:episode_to>/', character_list, name='character_list'),
+    path('admin/', admin.site.urls),
+    path('load-characters/', load_characters, name='load_characters'),
+    path('load-starships/', load_starships, name='load_starships'),
 ]
 
