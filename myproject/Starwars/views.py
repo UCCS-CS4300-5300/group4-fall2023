@@ -8,13 +8,6 @@ import urllib.request
 import json
 from django.core.exceptions import ObjectDoesNotExist
 
-
-TIMELINE_TO_FILM_IDS = {
-    '1': [1, 2, 3],  # Episode 1-3
-    '4': [4, 5, 6],  # Episode 4-6
-    '7': [7, 8, 9]   # Episode 7-9
-}
-
 # Create your views here.
 class HomeView(View):
 
@@ -72,65 +65,50 @@ def get_character_name(character_url):
       return character_data['name']
 
 def load_characters(request):
-  episode_id = request.GET.get('episode_id')
-  url = f'https://swapi.dev/api/films/{episode_id}/'
+    episode_id = request.GET.get('episode_id')
 
-  try:
-      with urllib.request.urlopen(url) as response:
-          data = json.loads(response.read().decode())
-          characters_urls = data.get('characters', [])
-          characters = []
-          for character_url in characters_urls:
-              character_name = get_character_name(character_url)
-              characters.append({'name': character_name, 'url': character_url})
-          return JsonResponse(characters, safe=False)
-  except urllib.error.HTTPError as e:
-      # Log error
-      print(f'HTTPError: {e.code} for film ID: {episode_id}')
-      return JsonResponse({'error': 'The requested resource was not found.'}, status=404)
-  except Exception as e:
-      # Log any other exceptions
-      print(f'An error occurred: {e}')
-      return JsonResponse({'error': 'An unexpected error occurred.'}, status=500)
+    try:
+        # Assuming your Character model has a ManyToMany field to Episode
+        characters = Character.objects.filter(episodes__id=episode_id)
+        characters_data = [{'name': character.name, 'id': character.id} for character in characters]
+        return JsonResponse(characters_data, safe=False)
+    except Exception as e:
+        print(f'An error occurred: {e}')
+        return JsonResponse({'error': 'An unexpected error occurred.'}, status=500)
+
+
 
 def load_starships(request):
     character_id = request.GET.get('character_id')
-    url = f'https://swapi.dev/api/people/{character_id}/'
 
     try:
-        with urllib.request.urlopen(url) as response:
-            character_data = json.loads(response.read().decode())
-            starship_urls = character_data.get('starships', [])
-            starships = []
-            for starship_url in starship_urls:
-                with urllib.request.urlopen(starship_url) as response:
-                    starship_data = json.loads(response.read().decode())
-                    starships.append({
-                        'name': starship_data['name'],
-                        'model': starship_data['model']
-                    })
-            return JsonResponse(starships, safe=False)
-    except urllib.error.HTTPError as e:
-        print(f'HTTPError: {e.code} when fetching starships for character ID: {character_id}')
-        return JsonResponse({'error': 'Starship resource not found.'}, status=e.code)
+        character = Character.objects.get(id=character_id)
+        starships = character.starships.all()
+        starships_data = [{'name': starship.name, 'id': starship.id} for starship in starships]
+        return JsonResponse(starships_data, safe=False)
+    except Character.DoesNotExist:
+        return JsonResponse({'error': 'Character not found.'}, status=404)
     except Exception as e:
         print(f'An error occurred: {e}')
         return JsonResponse({'error': 'An unexpected error occurred.'}, status=500)
 
 
 def get_characters_from_episode(episode_id):
-    url = f'https://swapi.dev/api/films/{episode_id}/'
-    with urllib.request.urlopen(url) as response:
-        data = json.loads(response.read().decode())
-        characters = data.get('characters', [])
-        return characters
+    try:
+        episode = Episode.objects.get(id=episode_id)
+        characters = episode.characters.all()
+        return [character.name for character in characters]
+    except Episode.DoesNotExist:
+        return []
+
 
 def get_starships_for_character(character_id):
-    url = f'https://swapi.dev/api/people/{character_id}/'
-    with urllib.request.urlopen(url) as response:
-        data = json.loads(response.read().decode())
-        starships = data.get('starships', [])
-        return starships
+    try:
+        character = Character.objects.get(id=character_id)
+        starships = character.starships.all()
+        return [starship.name for starship in starships]
+    except Character.DoesNotExist:
+        return []
 
 def your_view(request):
   form = StarWarsForm()
