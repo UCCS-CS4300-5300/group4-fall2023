@@ -1,0 +1,12 @@
+# Python and Django specific
+.pytest_cache
+__pycache__
+.coverage
+db.sqlite3
+
+# IDE specific
+.idea
+
+# Specific files
+replit_zip_error_log.txt
+replit.nix
