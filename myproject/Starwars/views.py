@@ -46,6 +46,11 @@ class BattleView(View):
 	def get(self, request):
 		return render(request, "battle.html")
 
+class SelectPlayer2View(View):
+
+	def get(self, request):
+		return render(request, "selectPlayer2.html")
+
 
 class SignupView(View):
 

@@ -15,37 +15,15 @@
 
 <body>
 
-	<h2>Player1 : </h2>
-	<form id="myform" method="post">
-		<label for="episode">Episode : </label>
-		<select name="episode" id="episode">
-			<option value="episode1">episode1</option>
-			<option value="episode2">episode2</option>
-			<option value="episode3">episode3</option>
+	<h2>Give to Player2</h2>
+	<form id="myform" action="/player2" method="post">
 
-		</select>
 		<br><br>
-		<label for="charcter">Characters : </label>
-		<select name="charcter" id="charcter">
-			<option value="char1">char1</option>
-			<option value="char2">char2</option>
-			<option value="char3">char3</option>
-
-		</select>
-		<br><br>
-		<label for="weapon">Weapon : </label>
-		<select name="weapon" id="weapon">
-			<option value="weapon1">weapon1</option>
-			<option value="weapon2">weapon2</option>
-			<option value="weapon3">weapon3</option>
-
-		</select>
-		<br><br>
-		<input type="submit" value="submit" />
+		<input type="submit" class="button" value="confirm" />
 	</form>
 
 
-	<script>
+	<!-- <script>
 		// Wrap your code in a function
 		function validateCredentials() {
 			document.getElementById("myform").addEventListener("submit", function (event) {
@@ -54,7 +32,7 @@
 				const form = document.getElementById("myform");
 
 
-				form.setAttribute("action", "/confirm-player2");
+				form.setAttribute("action", "/player2");
 				form.submit(); // Submit the form
 
 			});
@@ -64,7 +42,7 @@
 		document.addEventListener("DOMContentLoaded", function () {
 			validateCredentials();
 		});
-	</script>
+	</script> -->
 
 	<!-- <script src="myproject/Starwars/templates/validation.js" async defer></script> -->
 

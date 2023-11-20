@@ -28,6 +28,7 @@ from Starwars.views import (
 	Player1View,
 	Player2View,
 	BattleView,
+	SelectPlayer2View,
 	StartView
 )
 
@@ -43,6 +44,7 @@ urlpatterns = [
 	path('player1/', Player1View.as_view(), name='player1'),
 	path('player2/', Player2View.as_view(), name='player2'),
 	path('battle/', BattleView.as_view(), name='battle'),
+	path('confirm-player2/', SelectPlayer2View.as_view(), name='selectPlayer2'),
     path('gameplay/', GameplayView.as_view(), name='gameplay'),
     path('endscreen/<int:battle_id>/', EndscreenView.as_view(), name='endscreen'),
     path('admin/', admin.site.urls),
