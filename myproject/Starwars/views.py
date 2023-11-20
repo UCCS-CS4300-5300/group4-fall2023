@@ -27,6 +27,25 @@ class LoginView(View):
   def get(self, request):
     return render(request, "login.html")
 
+class StartView(View):
+	def get(self, request):
+		return render(request, "start.html")
+
+class Player1View(View):
+
+	def get(self, request):
+		return render(request, "player1.html")
+
+class Player2View(View):
+
+	def get(self, request):
+		return render(request, "player2.html")
+
+class BattleView(View):
+
+	def get(self, request):
+		return render(request, "battle.html")
+
 
 class SignupView(View):
 
