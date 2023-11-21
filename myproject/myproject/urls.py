@@ -15,23 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from Starwars.views import (
-    HomeView,
-    SelectionView,
-    LoginView, 
-    SignupView, 
-    GameplayView, 
-    ProfileView, 
-    EndscreenView,
-    load_characters,
-    load_starships,
-	Player1View,
-	Player2View,
-	BattleView,
-	SelectPlayer2View,
-	StartView
-)
-
+from Starwars.views import (HomeView, SelectionView, LoginView, SignupView,
+                            GameplayView, ProfileView, EndscreenView,
+                            load_characters, load_starships, Player1View,
+                            Player2View, BattleView, SelectPlayer2View,
+                            StartView, player1_data, player2_data,
+                            some_other_view)
 
 urlpatterns = [
     path('home/', HomeView.as_view(), name='home'),
@@ -39,16 +28,21 @@ urlpatterns = [
     path('login/', LoginView.as_view(), name='login'),
     path('signup/', SignupView.as_view(), name='signup'),
     path('profile/', ProfileView.as_view(), name='profile'),
-	path('selection/', SelectionView.as_view(), name='selection'),
-	path('', StartView.as_view(), name='start'),
-	path('player1/', Player1View.as_view(), name='player1'),
-	path('player2/', Player2View.as_view(), name='player2'),
-	path('battle/', BattleView.as_view(), name='battle'),
-	path('confirm-player2/', SelectPlayer2View.as_view(), name='selectPlayer2'),
+    path('selection/', SelectionView.as_view(), name='selection'),
+    path('', StartView.as_view(), name='start'),
+    path('player1/', Player1View.as_view(), name='player1'),
+    path('player2/', Player2View.as_view(), name='player2'),
+    path('battle/', BattleView.as_view(), name='battle'),
+    path('confirm-player2/', SelectPlayer2View.as_view(),
+         name='selectPlayer2'),
     path('gameplay/', GameplayView.as_view(), name='gameplay'),
-    path('endscreen/<int:battle_id>/', EndscreenView.as_view(), name='endscreen'),
+    path('endscreen/<int:battle_id>/',
+         EndscreenView.as_view(),
+         name='endscreen'),
     path('admin/', admin.site.urls),
     path('load-characters/', load_characters, name='load_characters'),
     path('load-starships/', load_starships, name='load_starships'),
+    path('player1_data/', player1_data, name='player1_data'),
+    path('player2_data/', player2_data, name='player2_data'),
+    path('results/', some_other_view, name='some_other_view'),
 ]
-
