@@ -1,0 +1,17 @@
+Name                                  Stmts   Miss  Cover
+---------------------------------------------------------
+Starwars/__init__.py                      0      0   100%
+Starwars/admin.py                         1      0   100%
+Starwars/apps.py                          4      0   100%
+Starwars/forms.py                         5      0   100%
+Starwars/migrations/0001_initial.py       6      0   100%
+Starwars/migrations/__init__.py           0      0   100%
+Starwars/models.py                       21      2    90%
+Starwars/tests.py                        28      0   100%
+Starwars/views.py                        93     55    41%
+manage.py                                12      2    83%
+myproject/__init__.py                     0      0   100%
+myproject/settings.py                    20      0   100%
+myproject/urls.py                         4      0   100%
+---------------------------------------------------------
+TOTAL                                   194     59    70%
