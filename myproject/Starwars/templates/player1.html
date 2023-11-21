@@ -1,73 +1,125 @@
 {% load static %}
 <!DOCTYPE html>
-
 <html>
 
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>player1</title>
-	<meta name="description" content="">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="{% static 'Starwars/styles.css' %}">
-
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>player1</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{% static 'Starwars/styles.css' %}">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
+  <h2>Player1 :</h2>
+  <form id="myform" method="post" action="/player1/data/">
+    {% csrf_token %}
+    <form id="myform" method="post">
+      <!-- Timeline Dropdowns -->
+      <label for="timeline1">Pick your Timeline for Player 1:</label>
+      <select class="dropdown" id="timeline1" name="timeline">
+        <option value="" disabled selected>Select an Episode</option>
+        <option value="1">Episode 1 - 3</option>
+        <option value="4">Episode 4 - 6</option>
+      </select>
+      <br><br>
 
-	<h2>Player1 : </h2>
-	<form id="myform" method="post">
-		<label for="episode">Pick your Timeline : </label>
-		<select name="episode" id="episode">
-      <option value="episode1">episode 1 -3</option>
-      <option value="episode2">episode 4-7</option>
-      <option value="episode3">episode 7-9</option>
+      <!-- Character (Champion) Dropdowns -->
+      <label for="champion1">Characters for Player 1:</label>
+      <select id="champion1" name="character"></select>
+      <br><br>
 
-		</select>
-		<br><br>
-		<label for="charcter">Characters : </label>
-		<select name="charcter" id="charcter">
-      <!-- Options will be dynamically loaded here  -->  
-			<option value="char1">char1</option>
-			<option value="char2">char2</option>
-			<option value="char3">char3</option>
+      <!-- Starship Dropdowns -->
+      <label for="starship1">Starship for Player 1:</label>
+      <select id="starship1" name="starship"></select>
+      <br><br>
 
-		</select>
-		<br><br>
-		<label for="weapon">Weapon : </label>
-		<select name="weapon" id="weapon">
-			<option value="weapon1">weapon1</option>
-			<option value="weapon2">weapon2</option>
-			<option value="weapon3">weapon3</option>
+      <input type="submit" value="Submit" />
+    </form>
 
-		</select>
-		<br><br>
-		<input type="submit" value="submit" />
-	</form>
+    <script>
+      // Wrap your code in a function
+      function validateCredentials() {
+        document.getElementById("myform").addEventListener("submit", function (event) {
+          event.preventDefault();
 
-
-	<script>
-		// Wrap your code in a function
-		function validateCredentials() {
-			document.getElementById("myform").addEventListener("submit", function (event) {
-				event.preventDefault();
-
-				const form = document.getElementById("myform");
+          const form = document.getElementById("myform");
 
 
-				form.setAttribute("action", "/confirm-player2");
-				form.submit(); // Submit the form
+          form.setAttribute("action", "/confirm-player2");
+          form.submit(); // Submit the form
 
-			});
-		}
+        });
+      }
 
-		// Call the function after the document has fully loaded
-		document.addEventListener("DOMContentLoaded", function () {
-			validateCredentials();
-		});
-	</script>
+      // Call the function after the document has fully loaded
+      document.addEventListener("DOMContentLoaded", function () {
+        validateCredentials();
+      });
+    </script>
 
-	<!-- <script src="myproject/Starwars/templates/validation.js" async defer></script> -->
+    <script>
+      // JavaScript to handle dynamic loading of characters based on timeline
+      function loadCharacters(team) {
+        var timeline = $('#timeline' + team).val(); // Get the selected timeline value
+        $.ajax({
+          url: '/load-characters/', // URL to your Django view that returns characters for a timeline
+          data: {
+            'episode_id': timeline
+          },
+          success: function (data) {
+            var championSelect = $('#champion' + team);
+            championSelect.empty(); // Clear the current options
+            $.each(data, function (index, character) {
+              // The URL format is https://swapi.dev/api/people/:id/
+              // Extract the ID from the URL by splitting and getting the second-last element
+              var characterId = character.url.split('/').slice(-2)[0];
+              championSelect.append($('<option>', {
+                value: characterId, // Use the character ID as the value
+                text: character.name // Use the character name for the option text
+              }));
+            });
+          },
+          error: function (error) {
+            console.error('Error loading characters:', error);
+          }
+        });
+      }
+
+      // Event listeners for when the timeline dropdowns change
+      $('#timeline1').change(function () {
+        loadCharacters('1');
+      });
+
+      // Function to load starships for a given character
+      function loadStarships(characterSelect, starshipSelect) {
+        var characterId = $(characterSelect).val(); // Get the selected character ID
+        $.ajax({
+          url: '/load-starships/', // URL to your Django view that returns starships for a character
+          data: {
+            'character_id': characterId
+          },
+          success: function (starships) {
+            $(starshipSelect).empty(); // Clear the current options
+            $.each(starships, function (index, starship) {
+              $(starshipSelect).append($('<option>', {
+                text: starship.name + ' (' + starship.model + ')' // Combine name and model for display
+              }));
+            });
+          },
+          error: function (error) {
+            console.error('Error loading starships:', error);
+          }
+        });
+      }
+
+      // Event listener for when a character is selected
+      $('#champion1').change(function () {
+        loadStarships('#champion1', '#starship1'); // Assume you have a starship dropdown with ID starship1
+      });
+
+    </script>
 
 
 </body>

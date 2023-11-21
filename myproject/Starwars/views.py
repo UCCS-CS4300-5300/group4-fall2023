@@ -7,14 +7,14 @@ from .forms import StarWarsForm
 import urllib.request
 import json
 from django.core.exceptions import ObjectDoesNotExist
+import os
+from django.shortcuts import render, redirect
 
 
 TIMELINE_TO_FILM_IDS = {
-    '1': [1, 2, 3],  # Episode 1-3
-    '4': [4, 5, 6],  # Episode 4-6
-    '7': [7, 8, 9]   # Episode 7-9
+    '4': [1, 2, 3],  # Episode 1-3
+    '1': [4, 5, 6],  # Episode 4-6
 }
-
 # Create your views here.
 class HomeView(View):
 
@@ -27,29 +27,35 @@ class LoginView(View):
   def get(self, request):
     return render(request, "login.html")
 
+
 class StartView(View):
-	def get(self, request):
-		return render(request, "start.html")
+
+  def get(self, request):
+    return render(request, "start.html")
+
 
 class Player1View(View):
 
-	def get(self, request):
-		return render(request, "player1.html")
+  def get(self, request):
+    return render(request, "player1.html")
+
 
 class Player2View(View):
 
-	def get(self, request):
-		return render(request, "player2.html")
+  def get(self, request):
+    return render(request, "player2.html")
+
 
 class BattleView(View):
 
-	def get(self, request):
-		return render(request, "battle.html")
+  def get(self, request):
+    return render(request, "battle.html")
+
 
 class SelectPlayer2View(View):
 
-	def get(self, request):
-		return render(request, "selectPlayer2.html")
+  def get(self, request):
+    return render(request, "selectPlayer2.html")
 
 
 class SignupView(View):
@@ -57,10 +63,11 @@ class SignupView(View):
   def get(self, request):
     return render(request, "signup.html")
 
+
 class SelectionView(View):
 
-	def get(self, request):
-		return render(request, "selection.html")
+  def get(self, request):
+    return render(request, "selection.html")
 
 
 class ProfileView(View):
@@ -68,27 +75,29 @@ class ProfileView(View):
   def get(self, request):
     return render(request, "profile.html")
 
+
 class GameplayView(TemplateView):
   template_name = "gameplay.html"
 
   def get_context_data(self, **kwargs):
-      context = super().get_context_data(**kwargs)
-      context['form'] = StarWarsForm()  # Add the form to the context
-      return context
+    context = super().get_context_data(**kwargs)
+    context['form'] = StarWarsForm()  # Add the form to the context
+    return context
+
 
 class EndscreenView(View):
+
   def get(self, request, battle_id):
-      battle = Battle.objects.get(id=battle_id)
-      characters = Character.objects.filter(
-          episode_from__lte=battle.episode_to,
-          episode_to__gte=battle.episode_from
-      )
-      context = {
-          'win_status': 'You Win' if battle.won else 'You Lose',
-          'battle_details': battle.details,
-          'characters': characters
-      }
-      return render(request, 'endscreen.html', context)
+    battle = Battle.objects.get(id=battle_id)
+    characters = Character.objects.filter(episode_from__lte=battle.episode_to,
+                                          episode_to__gte=battle.episode_from)
+    context = {
+        'win_status': 'You Win' if battle.won else 'You Lose',
+        'battle_details': battle.details,
+        'characters': characters
+    }
+    return render(request, 'endscreen.html', context)
+
 
 def get_character_name(character_url):
   with urllib.request.urlopen(character_url) as response:
@@ -155,6 +164,57 @@ def get_starships_for_character(character_id):
         data = json.loads(response.read().decode())
         starships = data.get('starships', [])
         return starships
+
+def player1_data(request):
+  if request.method == 'POST':
+      # Get data from the form
+      timeline = request.POST.get('timeline1')  # Adjusted to timeline1
+      character = request.POST.get('character1')  # Adjusted to character1
+      starship = request.POST.get('starship1')  # Adjusted to starship1
+
+      # Store data in session
+      request.session['player1_data'] = {
+          'timeline': timeline,
+          'character': character,
+          'starship': starship
+      }
+
+      # Redirect to another page or handle as needed
+      return redirect('some_other_view')
+
+  return render(request, 'player1.html')
+
+
+def player2_data(request):
+  if request.method == 'POST':
+      # Get data from the form
+      timeline = request.POST.get('timeline2')  # Adjusted to timeline2
+      character = request.POST.get('character2')  # Adjusted to character2
+      starship = request.POST.get('starship2')  # Adjusted to starship2
+  
+      # Store data in session
+      request.session['player2_data'] = {
+          'timeline': timeline,
+          'character': character,
+          'starship': starship
+      }
+  
+      # Redirect to another page or handle as needed
+      return redirect('some_other_view')
+  
+  return render(request, 'player2.html')
+
+
+def some_other_view(request):
+    player1_data = request.session.get('player1_data', {})
+    player2_data = request.session.get('player2_data', {})
+    context = {
+        'player1_data': player1_data,
+        'player2_data': player2_data
+    }
+    return render(request, 'another_template.html', context)
+
+
 
 def your_view(request):
   form = StarWarsForm()

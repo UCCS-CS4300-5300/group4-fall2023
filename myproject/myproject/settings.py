@@ -29,6 +29,7 @@ ALLOWED_HOSTS = [
     'group4-fall2023-ejesse--ejesse.repl.co',
     'group4-fall2023.khushalisam.repl.co',
     '127.0.0.1',
+    '10.22.0.183',
     'localhost',
     '0.0.0.0'
     '*',
@@ -133,5 +134,3 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-
