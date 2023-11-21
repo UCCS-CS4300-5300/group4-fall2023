@@ -67,14 +67,17 @@ def get_character_name(character_url):
 def load_characters(request):
     episode_id = request.GET.get('episode_id')
 
+    if not episode_id:  # Check if episode_id is not empty
+        return JsonResponse([], safe=False)  # Return an empty list or handle as appropriate
+
     try:
-        # Assuming your Character model has a ManyToMany field to Episode
         characters = Character.objects.filter(episodes__id=episode_id)
         characters_data = [{'name': character.name, 'id': character.id} for character in characters]
         return JsonResponse(characters_data, safe=False)
     except Exception as e:
         print(f'An error occurred: {e}')
         return JsonResponse({'error': 'An unexpected error occurred.'}, status=500)
+
 
 
 

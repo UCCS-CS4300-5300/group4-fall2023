@@ -61,32 +61,35 @@
   // JavaScript to handle dynamic loading of characters based on timeline
   function loadCharacters(team) {
     var timeline = $('#timeline' + team).val(); // Get the selected timeline value
-    $.ajax({
-      url: '/load-characters/',
-      data: {
-        'episode_id': timeline // sending individual episode ID
-      },
-      success: function (data) {
-        var championSelect = $('#champion' + team);
-        championSelect.empty(); // Clear the current options
-        championSelect.append($('<option>', {
-          value: "",
-          text: "Select a Champion",
-          disabled: true,
-          selected: true
-        }));
-        $.each(data, function (index, character) {
+    // Only proceed if timeline has a value
+    if (timeline) {
+      $.ajax({
+        url: '/load-characters/',
+        data: {
+          'episode_id': timeline // sending individual episode ID
+        },
+        success: function (data) {
+          var championSelect = $('#champion' + team);
+          championSelect.empty(); // Clear the current options
           championSelect.append($('<option>', {
-            value: character.id, // Use the character ID as the value
-            text: character.name // Use the character name for the option text
+            value: "",
+            text: "Select a Champion",
+            disabled: true,
+            selected: true
           }));
-        });
-        championSelect.trigger('change'); // Manually trigger change event after loading characters
-      },
-      error: function (error) {
-        console.error('Error loading characters:', error);
-      }
-    });
+          $.each(data, function (index, character) {
+            championSelect.append($('<option>', {
+              value: character.id, // Use the character ID as the value
+              text: character.name // Use the character name for the option text
+            }));
+          });
+          championSelect.trigger('change'); // Manually trigger change event after loading characters
+        },
+        error: function (error) {
+          console.error('Error loading characters:', error);
+        }
+      });
+    }
   }
 
   // Event listeners for when the timeline dropdowns change
@@ -101,33 +104,33 @@
   // Function to load starships for a given character
   function loadStarships(characterSelect, starshipSelect) {
     var characterId = $(characterSelect).val(); // Get the selected character ID
-    $.ajax({
-      url: '/load-starships/', // URL to your Django view that returns starships for a character
-      data: {
-        'character_id': characterId
-      },
-      success: function (starships) {
-        $(starshipSelect).empty(); // Clear the current options
-        $(starshipSelect).append($('<option>', {
-          value: "",
-          text: "Select a Starship",
-          disabled: true,
-          selected: true
-        }));
-        $.each(starships, function (index, starship) {
+    if (characterId) { // Ensure there is a character selected
+      $.ajax({
+        url: '/load-starships/', // URL to your Django view that returns starships for a character
+        data: {
+          'character_id': characterId
+        },
+        success: function (starships) {
+          $(starshipSelect).empty(); // Clear the current options
           $(starshipSelect).append($('<option>', {
-            value: starship.id,
-            text: starship.name
+            value: "",
+            text: "Select a Starship",
+            disabled: true,
+            selected: true
           }));
-        });
-      },
-      error: function (error) {
-        console.error('Error loading starships:', error);
-      }
-    });
+          $.each(starships, function (index, starship) {
+            $(starshipSelect).append($('<option>', {
+              value: starship.id,
+              text: starship.name
+            }));
+          });
+        },
+        error: function (error) {
+          console.error('Error loading starships:', error);
+        }
+      });
+    }
   }
-
-
 
   // Event listener for when a character is selected
   $('#champion1').change(function () {
@@ -138,11 +141,13 @@
     loadStarships('#champion2', '#starship2');
   });
 
-  // Initial trigger to load characters and starships for the default selection
-  $(document).ready(function() {
-    $('#timeline1').change();
-    $('#timeline2').change();
-  });
+  // No initial trigger to load characters and starships on document ready
+  // This is to prevent AJAX calls without an episode selected
+  // $(document).ready(function() {
+  //   $('#timeline1').change();
+  //   $('#timeline2').change();
+  // });
 </script>
+
 </body>
 </html>
