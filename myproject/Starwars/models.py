@@ -43,3 +43,13 @@ class Battle(models.Model):
 class CharactersStarship(models.Model):
   character = models.ForeignKey(Character, on_delete=models.CASCADE)
   starship = models.ForeignKey(Starship, on_delete=models.CASCADE)
+
+class Player(models.Model):
+  chosen_episode = models.ForeignKey(Episode, on_delete=models.SET_NULL, null=True)
+  chosen_character = models.ForeignKey(Character, on_delete=models.SET_NULL, null=True)
+  chosen_starship = models.ForeignKey(Starship, on_delete=models.SET_NULL, null=True)
+
+  # ... [any additional fields] ...
+
+  def __str__(self):
+      return f"Player - Episode: {self.chosen_episode}, Character: {self.chosen_character}, Starship: {self.chosen_starship}"
