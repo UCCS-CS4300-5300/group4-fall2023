@@ -1,0 +1,81 @@
+Run started:2023-11-22 06:13:17.467585
+
+Test results:
+>> Issue: [B310:blacklist] Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.
+   Severity: Medium   Confidence: High
+   CWE: CWE-22 (https://cwe.mitre.org/data/definitions/22.html)
+   More Info: https://bandit.readthedocs.io/en/1.7.5/blacklists/blacklist_calls.html#b310-urllib-urlopen
+   Location: ./views.py:103:7
+102	def get_character_name(character_url):
+103	  with urllib.request.urlopen(character_url) as response:
+104	      character_data = json.loads(response.read().decode())
+
+--------------------------------------------------
+>> Issue: [B310:blacklist] Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.
+   Severity: Medium   Confidence: High
+   CWE: CWE-22 (https://cwe.mitre.org/data/definitions/22.html)
+   More Info: https://bandit.readthedocs.io/en/1.7.5/blacklists/blacklist_calls.html#b310-urllib-urlopen
+   Location: ./views.py:112:11
+111	  try:
+112	      with urllib.request.urlopen(url) as response:
+113	          data = json.loads(response.read().decode())
+
+--------------------------------------------------
+>> Issue: [B310:blacklist] Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.
+   Severity: Medium   Confidence: High
+   CWE: CWE-22 (https://cwe.mitre.org/data/definitions/22.html)
+   More Info: https://bandit.readthedocs.io/en/1.7.5/blacklists/blacklist_calls.html#b310-urllib-urlopen
+   Location: ./views.py:134:13
+133	    try:
+134	        with urllib.request.urlopen(url) as response:
+135	            character_data = json.loads(response.read().decode())
+
+--------------------------------------------------
+>> Issue: [B310:blacklist] Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.
+   Severity: Medium   Confidence: High
+   CWE: CWE-22 (https://cwe.mitre.org/data/definitions/22.html)
+   More Info: https://bandit.readthedocs.io/en/1.7.5/blacklists/blacklist_calls.html#b310-urllib-urlopen
+   Location: ./views.py:139:21
+138	            for starship_url in starship_urls:
+139	                with urllib.request.urlopen(starship_url) as response:
+140	                    starship_data = json.loads(response.read().decode())
+
+--------------------------------------------------
+>> Issue: [B310:blacklist] Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.
+   Severity: Medium   Confidence: High
+   CWE: CWE-22 (https://cwe.mitre.org/data/definitions/22.html)
+   More Info: https://bandit.readthedocs.io/en/1.7.5/blacklists/blacklist_calls.html#b310-urllib-urlopen
+   Location: ./views.py:156:9
+155	    url = f'https://swapi.dev/api/films/{episode_id}/'
+156	    with urllib.request.urlopen(url) as response:
+157	        data = json.loads(response.read().decode())
+
+--------------------------------------------------
+>> Issue: [B310:blacklist] Audit url open for permitted schemes. Allowing use of file:/ or custom schemes is often unexpected.
+   Severity: Medium   Confidence: High
+   CWE: CWE-22 (https://cwe.mitre.org/data/definitions/22.html)
+   More Info: https://bandit.readthedocs.io/en/1.7.5/blacklists/blacklist_calls.html#b310-urllib-urlopen
+   Location: ./views.py:163:9
+162	    url = f'https://swapi.dev/api/people/{character_id}/'
+163	    with urllib.request.urlopen(url) as response:
+164	        data = json.loads(response.read().decode())
+
+--------------------------------------------------
+
+Code scanned:
+	Total lines of code: 362
+	Total lines skipped (#nosec): 0
+	Total potential issues skipped due to specifically being disabled (e.g., #nosec BXXX): 0
+
+Run metrics:
+	Total issues (by severity):
+		Undefined: 0
+		Low: 0
+		Medium: 6
+		High: 0
+	Total issues (by confidence):
+		Undefined: 0
+		Low: 0
+		Medium: 0
+		High: 6
+Files skipped (0):
