@@ -1,0 +1,96 @@
+__init__.py
+    LOC: 0
+    LLOC: 0
+    SLOC: 0
+    Comments: 0
+    Single comments: 0
+    Multi: 0
+    Blank: 0
+    - Comment Stats
+        (C % L): 0%
+        (C % S): 0%
+        (C + M % L): 0%
+admin.py
+    LOC: 3
+    LLOC: 1
+    SLOC: 1
+    Comments: 1
+    Single comments: 1
+    Multi: 0
+    Blank: 1
+    - Comment Stats
+        (C % L): 33%
+        (C % S): 100%
+        (C + M % L): 33%
+apps.py
+    LOC: 6
+    LLOC: 4
+    SLOC: 4
+    Comments: 0
+    Single comments: 0
+    Multi: 0
+    Blank: 2
+    - Comment Stats
+        (C % L): 0%
+        (C % S): 0%
+        (C + M % L): 0%
+forms.py
+    LOC: 7
+    LLOC: 5
+    SLOC: 5
+    Comments: 1
+    Single comments: 1
+    Multi: 0
+    Blank: 1
+    - Comment Stats
+        (C % L): 14%
+        (C % S): 20%
+        (C + M % L): 14%
+integration_tests.py
+    LOC: 70
+    LLOC: 53
+    SLOC: 52
+    Comments: 8
+    Single comments: 5
+    Multi: 0
+    Blank: 13
+    - Comment Stats
+        (C % L): 11%
+        (C % S): 15%
+        (C + M % L): 11%
+models.py
+    LOC: 45
+    LLOC: 29
+    SLOC: 29
+    Comments: 2
+    Single comments: 2
+    Multi: 0
+    Blank: 14
+    - Comment Stats
+        (C % L): 4%
+        (C % S): 7%
+        (C + M % L): 4%
+tests.py
+    LOC: 40
+    LLOC: 28
+    SLOC: 28
+    Comments: 2
+    Single comments: 2
+    Multi: 0
+    Blank: 10
+    - Comment Stats
+        (C % L): 5%
+        (C % S): 7%
+        (C + M % L): 5%
+views.py
+    LOC: 221
+    LLOC: 143
+    SLOC: 153
+    Comments: 18
+    Single comments: 9
+    Multi: 0
+    Blank: 59
+    - Comment Stats
+        (C % L): 8%
+        (C % S): 12%
+        (C + M % L): 8%

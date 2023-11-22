@@ -1,0 +1,65 @@
+apps.py
+    C 4:0 MyappConfig - A
+forms.py
+    C 3:0 StarWarsForm - A
+integration_tests.py
+    F 7:0 mocked_requests_get - A
+    C 31:0 GetCharacterNameTest - A
+    C 37:0 LoadCharactersTest - A
+    C 44:0 LoadStarshipsTest - A
+    M 33:2 GetCharacterNameTest.test_get_character_name - A
+    M 39:2 LoadCharactersTest.test_load_characters - A
+    M 46:4 LoadStarshipsTest.test_load_starships - A
+models.py
+    C 4:0 Episode - A
+    C 12:0 Starship - A
+    C 22:0 Character - A
+    C 32:0 Battle - A
+    M 8:2 Episode.__str__ - A
+    M 18:2 Starship.__str__ - A
+    M 27:2 Character.__str__ - A
+    M 38:2 Battle.__str__ - A
+    C 43:0 CharactersStarship - A
+tests.py
+    C 5:0 CharacterModelTest - A
+    C 14:0 ViewsTest - A
+    M 7:4 CharacterModelTest.test_character_str_representation - A
+    M 16:4 ViewsTest.test_home_view - A
+    M 21:4 ViewsTest.test_login_view - A
+    M 26:4 ViewsTest.test_signup_view - A
+    M 31:4 ViewsTest.test_profile_view - A
+    M 36:4 ViewsTest.test_gameplay_view - A
+views.py
+    F 107:0 load_characters - A
+    F 129:0 load_starships - A
+    C 88:0 EndscreenView - A
+    F 168:0 player1_data - A
+    F 188:0 player2_data - A
+    C 19:0 HomeView - A
+    C 25:0 LoginView - A
+    C 31:0 StartView - A
+    C 37:0 Player1View - A
+    C 43:0 Player2View - A
+    C 49:0 BattleView - A
+    C 55:0 SelectPlayer2View - A
+    C 61:0 SignupView - A
+    C 67:0 SelectionView - A
+    C 73:0 ProfileView - A
+    C 79:0 GameplayView - A
+    M 90:2 EndscreenView.get - A
+    F 102:0 get_character_name - A
+    F 154:0 get_characters_from_episode - A
+    F 161:0 get_starships_for_character - A
+    F 208:0 some_other_view - A
+    F 219:0 your_view - A
+    M 21:2 HomeView.get - A
+    M 27:2 LoginView.get - A
+    M 33:2 StartView.get - A
+    M 39:2 Player1View.get - A
+    M 45:2 Player2View.get - A
+    M 51:2 BattleView.get - A
+    M 57:2 SelectPlayer2View.get - A
+    M 63:2 SignupView.get - A
+    M 69:2 SelectionView.get - A
+    M 75:2 ProfileView.get - A
+    M 82:2 GameplayView.get_context_data - A
