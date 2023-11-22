@@ -6,25 +6,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>End Screen</title>
-  <link rel="stylesheet" href="{% static 'styles.css' %}">
+  <link rel="stylesheet" href="{% static '/Starwars/styles.css' %}">
 </head>
 
 <body>
   <div id="end-screen">
-    <h1>{{ win_status }}</h1>
+    <!-- Check if player 1 won and display appropriate message -->
+    <h1>{% if battle.won == '1' %}Player 1 Wins!{% elif battle.won == '2' %}Player 2 Wins!{% endif %}</h1>
     <div id="battle-details">
       <h2>Battle Details:</h2>
-      <p>{{ battle_details }}</p>
+      <!-- Use player1_character and player1_starship for Player 1 -->
+      <p><b>{{ battle.player1_character.name }}</b> in <b>{{ battle.player1_starship.name }}</b>
+        <!-- Use player2_character and player2_starship for Player 2 -->
+        vs. <b>{{ battle.player2_character.name }}</b> in <b>{{ battle.player2_starship.name }}</b></p>
     </div>
-    <div id="characters-involved">
-      <h2>Characters Involved:</h2>
-      <ul>
-        {% for character in characters %}
-        <li>{{ character.name }} - {{ character.role }} (Episode {{ character.episode }})</li>
-        {% endfor %}
-      </ul>
-    </div>
-    <a href="{% url 'gameplay' %}">Play Again</a>
+  </div>
+  <a href="{% url 'gameplay' %}">Play Again</a>
   </div>
 </body>
 
