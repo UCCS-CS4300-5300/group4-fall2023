@@ -30,13 +30,27 @@ class Character(models.Model):
 
 # Define the Battle model
 class Battle(models.Model):
-  won = models.BooleanField(default=False)
-  details = models.TextField()
-  episode_from = models.IntegerField()
-  episode_to = models.IntegerField()
+  won = models.CharField(max_length=1)
+  player1_character = models.ForeignKey(Character,
+                                        related_name='player1_character',
+                                        on_delete=models.CASCADE,
+                                        null=True)
+  player1_starship = models.ForeignKey(Starship,
+                                       related_name='player1_starship',
+                                       on_delete=models.CASCADE,
+                                       null=True)
+  player2_character = models.ForeignKey(Character,
+                                        related_name='player2_character',
+                                        on_delete=models.CASCADE,
+                                        null=True)
+  player2_starship = models.ForeignKey(Starship,
+                                       related_name='player2_starship',
+                                       on_delete=models.CASCADE,
+                                       null=True)
 
   def __str__(self):
-    return "Battle Won: " + str(self.won) + ", Details: " + self.details
+    win_status = "Player 1 Wins" if self.won == '1' else self.won == '2' "Player 2 Wins"
+    return f"Battle {win_status}: {self.player1_character} in {self.player1_starship} vs {self.player2_character} in {self.player2_starship}"
 
 
 # Define the CharactersStarship model

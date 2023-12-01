@@ -88,15 +88,25 @@ class GameplayView(TemplateView):
 class EndscreenView(View):
 
   def get(self, request, battle_id):
-    battle = Battle.objects.get(id=battle_id)
-    characters = Character.objects.filter(episode_from__lte=battle.episode_to,
-                                          episode_to__gte=battle.episode_from)
-    context = {
-        'win_status': 'You Win' if battle.won else 'You Lose',
-        'battle_details': battle.details,
-        'characters': characters
-    }
-    return render(request, 'endscreen.html', context)
+    try:
+      battle = Battle.objects.get(id=battle_id)
+      context = {
+          'battle': battle,
+          'won': battle.won,
+          'player1_character': battle.player1_character,
+          'player1_starship': battle.player1_starship,
+          'player2_character': battle.player2_character,
+          'player2_starship': battle.player2_starship
+      }
+      return render(request, 'endscreen.html', context)
+    except ObjectDoesNotExist:
+      # If the Battle with the given id doesn't exist
+      return JsonResponse({'error': 'Battle not found.'}, status=404)
+    except Exception as e:
+      # Log the exception and return a generic error response
+      print(f'An unexpected error occurred: {e}')
+      return JsonResponse({'error': 'An unexpected error occurred.'},
+                          status=500)
 
 
 def get_character_name(character_url):
