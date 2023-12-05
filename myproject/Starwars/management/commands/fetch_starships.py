@@ -3,9 +3,30 @@ from django.core.management.base import BaseCommand
 from Starwars.models import Starship  
 import random
 
+def calculate_values(input_string):
+    # Simple hash function to generate values based on the input string
+    hash_value = hash(input_string)
+    
+    # Ensure dodge is greater than attack and keep values between 1 and 25
+    attack = (hash_value % 25) + 1
+    dodge = ((hash_value + 100) % 25) + 6  # Making sure dodge is greater than attack (minimum 6)
+    defend = 31 - (attack + dodge)  # The sum of all three values is 31
+    
+    # Adjust values if they go out of bounds
+    if defend < 1:
+        defend = 1
+        dodge = 30 - (attack + defend)
+    elif defend > 25:
+        defend = 25
+        dodge = 30 - (attack + defend)
+    
+    return attack, dodge, defend
+
 
 class Command(BaseCommand):
     help = 'Fetch starship data from SWAPI and initialize the database'
+
+
 
     def handle(self, *args, **kwargs):
         url_template = 'https://swapi.dev/api/starships/?page={}'
@@ -22,9 +43,7 @@ class Command(BaseCommand):
                 for starship in starships_data:
                     # Extract relevant data
                     name = starship.get('name', '')
-                    dodge = random.randint(1,25)
-                    attack = random.randint(1,dodge)
-                    defend = random.randint(1,25)
+                    attack, dodge, defend = calculate_values(name)
                     
                     
                     # Create or update your Starship model with the retrieved data
