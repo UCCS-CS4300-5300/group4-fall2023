@@ -14,7 +14,7 @@ class CharacterModelTest(TestCase):
 class ViewsTest(TestCase):
 
     def test_home_view(self):
-        response = self.client.get(reverse('home'))
+        rgit push origin --tags esponse = self.client.get(reverse('home'))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'home.html')
 
