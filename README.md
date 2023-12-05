@@ -15,7 +15,7 @@ This project is a Star Wars Battle Simulator that allows users to engage in roun
 - SWAPI.dev API
 
 ## Game Premise
-Starship Battle is a strategic game inspired by rock-paper-scissors, featuring starships with unique abilities. Each player starts with 100 health points, and the game is played over a maximum of three rounds.
+Starship Battle is a strategic game inspired by rock-paper-scissors, featuring starships with unique abilities. Each player starts with 100 health points, and the game is played until a player has no health
 
 ## Rules
 The game involves three actions:
@@ -23,6 +23,6 @@ The game involves three actions:
 2. **Defend**: Blocks the opponent's attack.
 3. **Counter**: Effective against defend, but vulnerable to attack.
 
-Each starship has unique values for attack and counter actions, with the sum of both always equaling 30. Game continues until winner is found
+Each starship has unique values for attack and counter actions, with the sum of both always equaling 30. 
 
 
