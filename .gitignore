@@ -6,6 +6,7 @@ db.sqlite3
 
 # IDE specific
 .idea
+/venv/
 
 # Specific files
 replit_zip_error_log.txt
