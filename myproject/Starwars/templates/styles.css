@@ -1,112 +1,117 @@
 .main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
 }
 
 /* Overall Theme */
 body {
-    background-color: #000;
-    color: #FFF;
-    font-family: 'Arial', sans-serif;
-    background-size: cover;
-    background-repeat: no-repeat;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+	background-color: #000;
+	color: #FFF;
+	font-family: 'Arial', sans-serif;
+	background-size: cover;
+	background-repeat: no-repeat;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
 }
 
 h1 {
-    font-size: 4em;
-    color: #FFD700;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    margin-bottom: 20px;
+	font-size: 4em;
+	color: #FFD700;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+	margin-bottom: 20px;
 }
 
 /* Form & Table Styles */
 form {
-    background-color: rgba(0, 0, 0, 0.7);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    width: 100%;
+	background-color: rgba(0, 0, 0, 0.7);
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	width: 100%;
 }
 
 table {
-    width: 100%;
-    border-collapse: collapse;
-    table-layout: fixed;
-    margin-bottom: 20px;
+	width: 100%;
+	border-collapse: collapse;
+	table-layout: fixed;
+	margin-bottom: 20px;
 }
 
-table, th, td {
-    border: 1px solid #FFF;
+table,
+th,
+td {
+	border: 1px solid #FFF;
 }
 
 td {
-    padding: 5px; /* Reduced padding for table cells */
+	padding: 5px;
+	/* Reduced padding for table cells */
 }
 
 label {
-    color: #FFD700;
-    font-weight: bold;
+	color: #FFD700;
+	font-weight: bold;
 }
 
 .blank,
 input[type="text"],
 input[type="email"],
 input[type="password"] {
-    width: calc(100% - 20px); /* Adjusted width for input fields */
-    padding: 8px;
-    border-radius: 4px;
-    border: 1px solid #FFF;
-    background-color: rgba(255, 255, 255, 0.1);
-    color: #FFF;
-    margin: 5px 0;
+	width: calc(100% - 20px);
+	/* Adjusted width for input fields */
+	padding: 8px;
+	border-radius: 4px;
+	border: 1px solid #FFF;
+	background-color: rgba(255, 255, 255, 0.1);
+	color: #FFF;
+	margin: 5px 0;
 }
 
 .blank::placeholder,
 input[type="text"]::placeholder,
 input[type="email"]::placeholder,
 input[type="password"]::placeholder {
-    color: #aaa;
+	color: #aaa;
 }
 
 .button,
 button[type="submit"] {
-    width: calc(100% - 40px); /* Adjusted width for button */
-    padding: 10px;
-    background-color: #253f58;
-    border: none;
-    color: #FFF;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: 0.3s;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    align-self: center;
-    margin-top: 10px;
+	width: calc(100% - 40px);
+	/* Adjusted width for button */
+	padding: 10px;
+	background-color: #253f58;
+	border: none;
+	color: #FFF;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: 0.3s;
+	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+	align-self: center;
+	margin-top: 10px;
 }
 
 .button:hover,
 button[type="submit"]:hover {
-    background-color: #234057;
+	background-color: #234057;
 }
 
 .button:active,
 button[type="submit"]:active {
-    position: relative;
-    top: 1px;
+	position: relative;
+	top: 1px;
 }
 
 br {
-    content: "";
-    margin: 15px 0;
-    display: block;
-    clear: both;
+	content: "";
+	margin: 15px 0;
+	display: block;
+	clear: both;
 }

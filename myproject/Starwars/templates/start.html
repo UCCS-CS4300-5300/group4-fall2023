@@ -11,12 +11,56 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="{% static 'Starwars/styles.css' %}">
 
+	<style>
+		body {
+			background-image: url('http://3.bp.blogspot.com/-DvGx2jwCzxk/UAVQbLXMHmI/AAAAAAAAAnA/KDX42bx2up4/s1600/star-wars-wallpapers_for_desktop.jpg');
+
+			/* Adjust background properties */
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+
+			/* Make the background transparent */
+			filter: brightness(1.0);
+			/* Adjust the opacity value as needed */
+		}
+
+		#button {
+			width: 30%;
+			margin: auto;
+			adding: 10px 20px;
+			font-size: 25px;
+
+			border-radius: 10px;
+			background-color: #556B2F;
+			color: white;
+			cursor: pointer;
+			filter: brightness(1.0);
+			background-color: transparent;
+
+			transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+
+		}
+
+		#button:hover {
+			background-color: ;
+			color: white;
+			font-size: 30px;
+			border: 2px solid red;
+
+		}
+
+		#myform {
+			background-color: transparent;
+		}
+	</style>
 </head>
 
 <body>
 	<form id="myform" method="post">
 
-		<input class="button" type="submit" value="start">
+		<input id="button" class="button" type="submit" value="START">
 
 	</form>
 
