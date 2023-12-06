@@ -1,0 +1,4 @@
+PS C:\Dev\4300\group4-fall2023\myproject\myproject> pylint myproject
+
+------------------------------------
+Your code has been rated at 10.00/10

@@ -1,0 +1,74 @@
+PS C:\Dev\4300\group4-fall2023> radon cc -a -s .
+myproject\manage.py
+    F 7:0 main - A (2)
+myproject\Starwars\apps.py
+    C 4:0 MyappConfig - A (1)
+myproject\Starwars\forms.py
+    C 3:0 StarWarsForm - A (1)
+myproject\Starwars\integration_tests.py
+    F 7:0 mocked_requests_get - A (4)
+    C 31:0 GetCharacterNameTest - A (2)
+    C 37:0 LoadCharactersTest - A (2)
+    C 44:0 LoadStarshipsTest - A (2)
+    M 33:2 GetCharacterNameTest.test_get_character_name - A (1)
+    M 39:2 LoadCharactersTest.test_load_characters - A (1)
+    M 46:4 LoadStarshipsTest.test_load_starships - A (1)
+myproject\Starwars\models.py
+    C 32:0 Battle - A (3)
+    C 4:0 Episode - A (2)
+    C 12:0 Starship - A (2)
+    C 22:0 Character - A (2)
+    M 51:2 Battle.__str__ - A (2)
+    M 8:2 Episode.__str__ - A (1)
+    M 18:2 Starship.__str__ - A (1)
+    M 27:2 Character.__str__ - A (1)
+    C 57:0 CharactersStarship - A (1)
+myproject\Starwars\tests.py
+    ERROR: invalid syntax (<unknown>, line 17)
+myproject\Starwars\views.py
+    F 117:0 load_characters - A (4)
+    F 139:0 load_starships - A (4)
+    C 88:0 EndscreenView - A (4)
+    M 90:2 EndscreenView.get - A (3)
+    F 178:0 player1_data - A (2)
+    F 198:0 player2_data - A (2)
+    C 19:0 HomeView - A (2)
+    C 25:0 LoginView - A (2)
+    C 31:0 StartView - A (2)
+    C 37:0 Player1View - A (2)
+    C 43:0 Player2View - A (2)
+    C 49:0 BattleView - A (2)
+    C 55:0 SelectPlayer2View - A (2)
+    C 61:0 SignupView - A (2)
+    C 67:0 SelectionView - A (2)
+    C 73:0 ProfileView - A (2)
+    C 79:0 GameplayView - A (2)
+    F 112:0 get_character_name - A (1)
+    F 164:0 get_characters_from_episode - A (1)
+    F 171:0 get_starships_for_character - A (1)
+    F 218:0 some_other_view - A (1)
+    F 229:0 your_view - A (1)
+    M 21:2 HomeView.get - A (1)
+    M 27:2 LoginView.get - A (1)
+    M 33:2 StartView.get - A (1)
+    M 39:2 Player1View.get - A (1)
+    M 45:2 Player2View.get - A (1)
+    M 51:2 BattleView.get - A (1)
+    M 57:2 SelectPlayer2View.get - A (1)
+    M 63:2 SignupView.get - A (1)
+    M 69:2 SelectionView.get - A (1)
+    M 75:2 ProfileView.get - A (1)
+    M 82:2 GameplayView.get_context_data - A (1)
+myproject\Starwars\management\commands\fetch_starships.py
+    C 26:0 Command - A (5)
+    M 31:4 Command.handle - A (4)
+    F 6:0 calculate_values - A (3)
+myproject\Starwars\migrations\0001_initial.py
+    C 7:0 Migration - A (1)
+myproject\Starwars\migrations\0002_auto_20231121_1732.py
+    C 6:0 Migration - A (1)
+myproject\Starwars\migrations\0003_remove_battle_details_remove_battle_episode_from_and_more.py
+    C 7:0 Migration - A (1)
+
+58 blocks (classes, functions, methods) analyzed.
+Average complexity: A (1.793103448275862)
